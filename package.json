@@ -1,0 +1,27 @@
+{
+  "name": "dispatched",
+  "version": "1.0.0",
+  "description": "Reimplementation of github.com/facebook/flux in TypeScript with no dependency on react",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc -b .",
+    "test": "echo \"TODO: tests\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/getaddrinfo/dispatched.git"
+  },
+  "author": "getaddrinfo <oss@getaddrinfo.com>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/getaddrinfo/dispatched/issues"
+  },
+  "homepage": "https://github.com/getaddrinfo/dispatched#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "eventemitter3": "^4.0.7"
+  }
+}

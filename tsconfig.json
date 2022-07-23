@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es3",
+        "outDir": "dist",
+        "module": "commonjs",
+        "allowJs": true,
+        "preserveConstEnums": true,
+        "sourceMap": false,
+        "declaration": true,
+        "strictPropertyInitialization": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"strictBindCallApply": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noUncheckedIndexedAccess": true,
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}
