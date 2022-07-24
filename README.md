@@ -18,15 +18,15 @@ Although Facebook have retired Flux, many large applications still utilise it an
 
 Many changes have occurred to cleanup methods and use more modern approaches to problems imposed through its design (abstraction, errors).
 
-A migration guide can be accessed [here](./docs/Migration.md), which details the changes necessary to move to `dispatched`
+A migration guide can be accessed [here](https://github.com/getaddrinfo/dispatched/blob/master/docs/Migration.md), which details the changes necessary to move to `dispatched`
 
 ## Docs
 
 Docs are viewable in the `docs/` directory:
-- [Dispatcher](./docs/Dispatcher.md)
-- [Group](./docs/Group.md)
-- [Store](./docs/Store.md)
-- [ReduceStore](./docs/ReduceStore.md)
+- [Dispatcher](https://github.com/getaddrinfo/dispatched/blob/master/docs/Dispatcher.md)
+- [Group](https://github.com/getaddrinfo/dispatched/blob/master/docs/Group.md)
+- [Store](https://github.com/getaddrinfo/dispatched/blob/master/docs/Store.md)
+- [ReduceStore](https://github.com/getaddrinfo/dispatched/blob/master/docs/ReduceStore.md)
 
 
 ## Examples
@@ -43,7 +43,7 @@ $ npm install dispatched
 ## Example usage
 
 ```ts
-import Dispatched from "dispatched";
+import * as Dispatched from "dispatched";
 
 type Action = 
     | { type: "create-todo", id: string, name: string, body: string, done: boolean }
@@ -88,11 +88,13 @@ TodoStore.dispatchToken = Dispatcher.register((action) => {
         case 'update-todo':
             const todoIndex = TodoStore.todos.findIndex((todo) => todo.id === action.id);
 
+            const oldTodo = TodoStores.todos[todoIndex];
+
             TodoStore.todos[todoIndex] = {
                 id: action.id,
-                name: action.name,
-                body: action.body,
-                done: action.body   
+                name: action.name ?? oldTodo.name,
+                body: action.body ?? oldTodo.body,
+                done: action.done ?? oldTodo.done
             };
 
             break;
