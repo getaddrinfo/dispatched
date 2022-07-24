@@ -26,5 +26,11 @@
   },
   "dependencies": {
     "eventemitter3": "^4.0.7"
-  }
+  },
+  "keywords": [
+    "state management",
+    "data flow",
+    "model",
+    "store"
+  ]
 }
