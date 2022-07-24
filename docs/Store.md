@@ -7,6 +7,7 @@ A store generally conforms to the following requirements:
 
 An implementation of Store can be seen [here](https://github.com/getaddrinfo/dispatched/blob/master/src/store/Store.ts). It implements all of the above, and is used as a base class for [ReduceStore](./ReduceStore.md).
 
+
 ## API
 
 `Store<T>`

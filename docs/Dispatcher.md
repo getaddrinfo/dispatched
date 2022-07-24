@@ -5,6 +5,7 @@ Dispatcher is used to broadcast payloads to registered callbacks. This is differ
 
 Check out [Dispatcher.ts](https://github.com/getaddrinfo/dispatched/blob/master/src/Dispatcher.ts) for the source code.
 
+
 ## API
 
 for `Dispatcher<T>` where `T` is the actions that can be dispatched via the Dispatcher:
@@ -18,6 +19,7 @@ for `Dispatcher<T>` where `T` is the actions that can be dispatched via the Disp
 - **`dispatch(payload: T): void`** Dispatches a payload to all registered callbacks.
 
 - **`isDispatching(): boolean`** Is this Dispatcher currently dispatching.
+
 
 ## Example
 

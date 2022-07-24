@@ -2,6 +2,7 @@
 
 Detailed below are the changes between `dispatched` and `flux`.
 
+
 ## Dispatcher
 
 Properties:
@@ -26,7 +27,8 @@ Functions:
 - `_getUniformDispatcher(stores: FluxStore[])` -> `getDispatcher(stores: Store<any>[])`
 
 
-## Store
+
+## Store
 
 Properties:
 - `__changed` -> `changed`
@@ -40,12 +42,14 @@ Methods:
 - `__invokeOnDispatch(payload)` -> `invoke(payload)`
 - `__onDispatch(payload)` -> `dispatch(payload)`
 
+
 ## ReduceStore
 
 Major changes are derived from `Store`
 
 Methods:
 - `areEqual` -> `equal`
+
 
 ## Removed:
 

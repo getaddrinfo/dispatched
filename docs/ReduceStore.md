@@ -6,6 +6,7 @@ Takes two type params:
 - `T`: The type of actions that can be performed on it.
 - `U`: The type of state.
 
+
 ## API
 
 `ReduceStore<T, U> extends Store<T>`

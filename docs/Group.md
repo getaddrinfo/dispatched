@@ -2,6 +2,7 @@
 
 Represents a group of Stores that invokes a callback once all have finished their callbacks.
 
+
 ## API
 
 `StoreGroup`
