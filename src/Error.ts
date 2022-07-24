@@ -10,7 +10,7 @@ export class UnknownCallbackError extends DispatchedError {
 
     constructor(id: string) {
         super(
-            `Dispatcher.detach(id): ${id} is not registered.`
+            `Dispatcher.register(id): ${id} is not registered.`
         )
     }
 }
@@ -20,7 +20,7 @@ export class StillDispatchingError extends DispatchedError {
 
     constructor() {
         super(
-            `Dispatcher.dispatch(payload): Cannot dispatch while still dispatching`
+            `Dispatcher.dispatch(payload): Cannot dispatch while another dispatch is in progress`
         );
     }
 }
@@ -30,7 +30,7 @@ export class CircularDependencyError extends DispatchedError {
 
     constructor() {
         super(
-            `Dispatcher.dependOn(...tokens): Circular dependency detected.`
+            `Dispatcher.waitFor(...tokens): Circular dependency detected.`
         )
     }
 }
