@@ -4,6 +4,9 @@
   "description": "Reimplementation of github.com/facebook/flux in TypeScript with no dependency on react",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npx tsc -b .",
     "test": "echo \"TODO: tests\" && exit 0"
