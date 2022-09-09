@@ -2,7 +2,7 @@ import type { Dispatcher } from '../Dispatcher';
 import { NotDispatchingError } from '../Error';
 
 export type StoreCallback = () => void;
-export type Unregistrable = { remove: () => void } 
+export type Revocable = { remove: () => void };
 
 /**
  * Represents the most basic functionality of a Store.
@@ -47,7 +47,7 @@ export abstract class Store<T> {
      * @param callback The callback to call when an event is emitted
      * @returns An object with a cleanup function
      */
-    public addListener(callback: StoreCallback): Unregistrable {
+    public addListener(callback: StoreCallback): Revocable {
         this.callbacks.push(callback);
 
         const removeListener = () => this.callbacks.splice(this.callbacks.indexOf(callback), 1);
