@@ -1,8 +1,7 @@
 import type { Dispatcher } from '../Dispatcher';
 import { NotDispatchingError } from '../Error';
-import EventEmitter = require('eventemitter3');
 
-export type StoreCallback = (eventType?: string) => void;
+export type StoreCallback = () => void;
 export type Unregistrable = { remove: () => void } 
 
 /**
@@ -12,16 +11,14 @@ export type Unregistrable = { remove: () => void }
  */
 export abstract class Store<T> {
     public className: string;
-
     protected changed: boolean = false;
-    protected changeEvent: string = "change"
-    protected emitter: EventEmitter;
+    protected callbacks: StoreCallback[] = [];
 
     private _dispatchToken: string;
     
     constructor(protected dispatcher: Dispatcher<T>) {
         this.className = (this.constructor as any).name;
-        this.emitter = new EventEmitter();
+        this.callbacks = [];
 
         this._dispatchToken = dispatcher.register((payload) => this.invoke(payload));
     }
@@ -51,9 +48,9 @@ export abstract class Store<T> {
      * @returns An object with a cleanup function
      */
     public addListener(callback: StoreCallback): Unregistrable {
-        this.emitter.addListener(this.changeEvent, callback);
-        const removeListener = () => this.emitter.removeListener(this.changeEvent, callback);
+        this.callbacks.push(callback);
 
+        const removeListener = () => this.callbacks.splice(this.callbacks.indexOf(callback), 1);
         return { remove: () => { removeListener(); }};
     }
 
@@ -91,8 +88,12 @@ export abstract class Store<T> {
         this.dispatch(payload);
 
         if(this.changed) {
-            this.emitter.emit(this.changeEvent);
+            this.runCallbacks();
         }
+    }
+
+    protected runCallbacks() {
+        this.callbacks.forEach((cb) => cb())
     }
 
     abstract dispatch(payload: T): void;

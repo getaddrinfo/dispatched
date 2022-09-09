@@ -43,7 +43,7 @@ export abstract class ReduceStore<T, U> extends Store<T> {
         }
 
         if(this.changed) {
-            this.emitter.emit(this.changeEvent);
+            this.runCallbacks();
         }     
     }
 
