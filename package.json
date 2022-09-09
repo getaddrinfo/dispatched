@@ -1,6 +1,6 @@
 {
   "name": "dispatched",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Reimplementation of github.com/facebook/flux in TypeScript with no dependency on react",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
