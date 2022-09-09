@@ -7,9 +7,8 @@ Although Facebook have retired Flux, many large applications still utilise it an
 
 ## Benefits
 
-- No dependency on React (works with React 18.0, as well as other frameworks).
+- No dependencies (works with React 18.0, as well as other frameworks).
 - Written in TypeScript, provides stricter typings (derivation of types straight from code allows for more flexible usage).
-- Only depends on [eventemitter3](https://npmjs.com/package/eventemitter3).
 
 ## Removals & Changes
 - `FluxContainer`, and through association:

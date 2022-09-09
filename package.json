@@ -24,9 +24,7 @@
   "devDependencies": {
     "typescript": "^4.7.4"
   },
-  "dependencies": {
-    "eventemitter3": "^4.0.7"
-  },
+  "dependencies": {},
   "keywords": [
     "state management",
     "data flow",
