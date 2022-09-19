@@ -93,8 +93,12 @@ export class Dispatcher<T> {
         }
 
         this.begin(payload);
-        this.intermediate();
-        this.finish();
+        
+        try {
+            this.intermediate();
+        } finally {
+            this.finish();
+        }
     }
 
     /**
@@ -114,16 +118,16 @@ export class Dispatcher<T> {
      */
     public waitFor(tokens: string[]): void {
         for(const token of tokens) {
-            if(!this._callbacks[token]) {
-                throw new UnknownCallbackError(token);
-            }
-
             if(this._pending[token]) {
-                if(this._handled[token]) {
+                if(!this._handled[token]) {
                     throw new CircularDependencyError();
                 }
 
                 continue;
+            }
+
+            if(!this._callbacks[token]) {
+                throw new UnknownCallbackError(token);
             }
 
             this.process(token);
@@ -166,10 +170,6 @@ export class Dispatcher<T> {
      * Cleanup the state of the Dispatcher before beginning a dispatch.
      */
     private _reset(): void {
-        // cleanup
-        this._pending = {};
-        this._handled = {};
-
         for(const id of Object.keys(this._callbacks)) {
             this._pending[id] = false;
             this._handled[id] = false;
