@@ -118,8 +118,12 @@ export class Dispatcher<T> {
                 throw new UnknownCallbackError(token);
             }
 
-            if(this._pending[token] && this._handled[token]) {
-                throw new CircularDependencyError();
+            if(this._pending[token]) {
+                if(this._handled[token]) {
+                    throw new CircularDependencyError();
+                }
+
+                continue;
             }
 
             this.process(token);
